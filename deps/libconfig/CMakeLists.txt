@@ -37,17 +37,17 @@ ExternalProject_Add(
     libconfig
 
     PREFIX ${CARRIER_DEPS_BUILD_PREFIX}
-    URL "https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz"
-    URL_HASH SHA256=7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9
-    DOWNLOAD_NAME "libconfig-1.7.2.tar.gz"
+    URL "https://github.com/hyperrealm/libconfig/archive/v1.7.3.tar.gz"
+    URL_HASH SHA256=68757e37c567fd026330c8a8449aa5f9cac08a642f213f2687186b903bd7e94e
+    DOWNLOAD_NAME "libconfig-1.7.3.tar.gz"
     DOWNLOAD_DIR ${CARRIER_DEPS_TARBALL_DIR}
     DOWNLOAD_NO_PROGRESS 1
 
     BUILD_IN_SOURCE 1
 
-    PATCH_COMMAND ${PATCH_EXE} -s -p1 < ${CMAKE_CURRENT_LIST_DIR}/libconfig.patch
+    # PATCH_COMMAND ${PATCH_EXE} -s -p1 < ${CMAKE_CURRENT_LIST_DIR}/libconfig.patch
 
-    CONFIGURE_COMMAND ${CONFIGURE_CMD} ${CONFIGURE_ARGS}
+    CONFIGURE_COMMAND autoreconf -fiv && ${CONFIGURE_CMD} ${CONFIGURE_ARGS}
     BUILD_COMMAND ${BUILD_CMD} ${BUILD_ARGS}
     INSTALL_COMMAND ${INSTALL_CMD} ${INSTALL_ARGS}
 )

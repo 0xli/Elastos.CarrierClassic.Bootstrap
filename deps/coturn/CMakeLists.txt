@@ -45,7 +45,7 @@ ExternalProject_Add(
 
     BUILD_IN_SOURCE 1
 
-    PATCH_COMMAND ${PATCH_EXE} -s -p1 < "${CMAKE_CURRENT_LIST_DIR}/coturn.patch"
+    PATCH_COMMAND ${PATCH_EXE} -s -p1 < "${CMAKE_CURRENT_LIST_DIR}/coturn.patch" && ${PATCH_EXE} -s -p0 < "${CMAKE_CURRENT_LIST_DIR}/macos-ipv6.patch"
 
     CONFIGURE_COMMAND ${CONFIGURE_CMD} ${CONFIGURE_ARGS}
     BUILD_COMMAND ${BUILD_CMD} ${BUILD_ARGS}

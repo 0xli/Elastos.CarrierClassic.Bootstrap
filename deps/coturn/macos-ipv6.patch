@@ -1,0 +1,25 @@
+--- src/apps/common/apputils.c.orig	2025-09-11 00:00:00.000000000 +0000
++++ src/apps/common/apputils.c	2025-09-11 00:00:00.000000000 +0000
+@@ -517,7 +517,11 @@
+ #if defined(IPV6_DONTFRAG) && defined(IPPROTO_IPV6)
+       ret = setsockopt(fd, IPPROTO_IPV6, IPV6_DONTFRAG, &val, sizeof(val));
+ #else
++#ifdef __APPLE__
++      /* IPv6 DF flag not supported on macOS, skip */
++#else
+ #error CANNOT SET IPV6 SOCKET DF FLAG (1)
++#endif
+ #endif
+     }
+     if(ret<0) {
+@@ -544,7 +548,11 @@
+       ret = setsockopt(fd, IPPROTO_IPV6, IPV6_MTU_DISCOVER, &val, sizeof(val));
+ #else
++#ifdef __APPLE__
++      /* IPv6 MTU discovery not supported on macOS, skip */
++#else
+ #error CANNOT SET IPV6 SOCKET DF FLAG (2)
++#endif
+ #endif
+     }
+     if(ret<0) {
