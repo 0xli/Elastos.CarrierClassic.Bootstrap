@@ -25,6 +25,7 @@ else()
         "--disable-shared"
         "--enable-static=yes"
         "--disable-cxx"
+        "--disable-doc"
         ${CONFIGURE_ARGS_INIT})
 
     set(BUILD_CMD "make")
