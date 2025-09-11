@@ -112,6 +112,8 @@ After that, you can run the following commands to run **ela-bootstrapd** to boos
 ```shell
 $ cd outputs/usr/bin
 $ ./ela-bootstrapd --config=../../etc/elastos/bootstrapd.conf --foreground
+or 
+$ ./ela-bootstrapd --config=$HOME/ela-bootstrapd/bootstrapd.conf --foreground"
 ```
 
 #### 3. Deployment
