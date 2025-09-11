@@ -6,6 +6,12 @@
 
 Elastos Carrier bootstrap daemon is an essential service to help new nodes join and bootstrap the Elastos Carrier network.
 
+## Quick Start
+
+- **📖 Detailed Build Instructions**: See [BUILD_INSTRUCTIONS.md](BUILD_INSTRUCTIONS.md) for comprehensive platform-specific build guides
+- **🐧 Ubuntu Quick Setup**: Run `./scripts/setup-ubuntu.sh` to automatically install dependencies and configure the daemon
+- **🔧 Troubleshooting**: Check [BUILD_INSTRUCTIONS.md](BUILD_INSTRUCTIONS.md) for common build issues and solutions
+
 ## Build from source
 
 ### GNU/Linux (Ubuntu 16.04-x86_64 LTS is recommended)
