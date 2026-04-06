@@ -10,3 +10,19 @@ diff -ru libevent-2.1.8-stable/openssl-compat.h libevent-2.1.8-stable-mod/openss
 +#endif
 +
  #endif /* OPENSSL_COMPAT_H */
+diff -ru libevent-2.1.8-stable/evutil_rand.c libevent-2.1.8-stable-mod/evutil_rand.c
+--- libevent-2.1.8-stable/evutil_rand.c	2016-12-07 06:13:44.000000000 +0800
++++ libevent-2.1.8-stable-mod/evutil_rand.c	2026-04-06 00:00:00.000000000 +0800
+@@ -195,6 +195,12 @@
+ void
+ evutil_secure_rng_add_bytes(const char *buf, size_t n)
+ {
++#ifdef EVENT__HAVE_ARC4RANDOM
++	/* libc arc4random does not provide arc4random_addrandom (removed in glibc 2.36+). */
++	(void)buf;
++	(void)n;
++#else
+ 	arc4random_addrandom((unsigned char*)buf,
+ 	    n>(size_t)INT_MAX ? INT_MAX : (int)n);
++#endif
+ }
